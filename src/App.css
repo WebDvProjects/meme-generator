@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+@font-face {
+  font-family: "Impact";
+  src: url(/src/fonts/Impact-Font/impact.ttf) format("truetype");
+}
 * {
   box-sizing: border-box;
 }
@@ -99,6 +102,11 @@ input {
   border: 1px solid #d5d4d8;
 }
 
+.statement,
+.form--btn {
+  height: fit-content;
+}
+
 .statement {
   font-size: 0.75rem;
   padding: 9.25px;
@@ -135,6 +143,11 @@ input {
   margin: 0;
   left: 50%;
   transform: translateX(-50%);
+
+  font-family: "Impact", sans-serif;
+  --shadow-spread: 5px;
+  text-shadow: -2px 0 var(--shadow-spread) #000, 0 2px var(--shadow-spread) #000,
+    2px 0 var(--shadow-spread) #000, 0 -2px var(--shadow-spread) #000;
 }
 
 .meme--text.top {
@@ -143,4 +156,22 @@ input {
 
 .meme--text.bottom {
   bottom: 5%;
+}
+
+@media screen and (min-width: 900px) {
+  .content {
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+  }
+
+  .meme,
+  .form {
+    flex-grow: 1;
+    max-width: 600px;
+    height: fit-content;
+  }
+  .form {
+    gap: 30px;
+  }
 }
