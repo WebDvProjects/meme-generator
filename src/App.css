@@ -81,7 +81,10 @@ p {
   grid-template-columns: 1fr;
   gap: 40px;
 
-  place-items: center;
+  /* place-items: center; */
+  /* align-items: center; */
+  justify-items: center;
+  align-content: flex-start;
 }
 
 .content > :nth-child(n) {
@@ -144,9 +147,29 @@ input {
   justify-content: center;
 }
 
+.meme[data-has-meme="false"] {
+  width: 100%;
+  min-height: 300px;
+  border: 1px solid #000;
+}
+
+.meme[data-has-meme="false"]::after {
+  content: "No Meme";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.meme[data-has-meme="false"] > :nth-child(n) {
+  display: none;
+}
+
 .meme--img {
   width: 100%;
-  max-height: 600px;
+  max-height: 500px;
   object-fit: contain;
 }
 

@@ -10,7 +10,7 @@ function Form(props) {
         type="text"
         placeholder="Bottom Text"
       />
-      <button type="button" className="form--btn" onClick={props.handleSubmit}>
+      <button type="button" className="form--btn" onClick={props.handleClick}>
         Create a new meme Image 🖼
       </button>
     </div>
@@ -19,8 +19,11 @@ function Form(props) {
 
 function Meme(props) {
   return (
-    <div className="meme">
-      <img className="meme--img" src={props.meme.url} alt="meme" />
+    <div className="meme" data-has-meme={!!props.meme}>
+      {/* render img only if meme object is valid */}
+      {!!props.meme && (
+        <img className="meme--img" src={props.meme.url} alt="meme" />
+      )}
       <h2 className="meme--text top">Top text</h2>
       <h2 className="meme--text bottom">Bottom text</h2>
     </div>
@@ -28,16 +31,16 @@ function Meme(props) {
 }
 
 export default function Content() {
-  const [meme, setMeme] = useState(memes[1]);
+  const [meme, setMeme] = useState(null);
 
-  function handleSubmit() {
+  function handleClick() {
     const randIndx = Math.floor(Math.random() * memes.length);
-    console.log(memes[randIndx].url);
+    setMeme(memes[randIndx]);
   }
 
   return (
     <main className="content">
-      <Form handleSubmit={handleSubmit} />
+      <Form handleClick={handleClick} />
       <Meme meme={meme} />
     </main>
   );
