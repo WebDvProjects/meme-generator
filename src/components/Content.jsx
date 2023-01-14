@@ -35,9 +35,9 @@ function Meme() {
 
 export default function Content() {
   return (
-    <div className="content">
+    <main className="content">
       <Form />
       <Meme />
-    </div>
+    </main>
   );
 }
