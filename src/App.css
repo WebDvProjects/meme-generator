@@ -77,12 +77,19 @@ p {
 .content {
   grid-area: main;
   padding: 35px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 40px;
+
+  place-items: center;
 }
 
-form {
+.content > :nth-child(n) {
+  width: 100%;
+  max-width: 600px;
+}
+
+.form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
@@ -133,11 +140,13 @@ input {
 
 .meme {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .meme--img {
   width: 100%;
-  height: auto;
+  max-height: 600px;
   object-fit: contain;
 }
 
@@ -154,6 +163,7 @@ input {
     2px 0 var(--shadow-spread) #000, 0 -2px var(--shadow-spread) #000;
 
   word-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
 }
 
 .meme--text.top {
@@ -165,21 +175,6 @@ input {
 }
 
 @media screen and (min-width: 900px) {
-  .content {
-    flex-direction: row;
-    justify-content: center;
-    /* align-items: center; */
-  }
-
-  .meme,
-  .form {
-    flex-grow: 1;
-    max-width: 600px;
-    height: fit-content;
-  }
-  .form {
-    gap: 30px;
-  }
 }
 
 /* responsive for mobile */

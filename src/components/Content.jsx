@@ -1,32 +1,26 @@
-function Form() {
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("Form submitted");
-  }
+import { useState } from "react";
+import memes from "../meme-data";
 
+function Form(props) {
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <div className="form">
       <input className="top statement" type="text" placeholder="Top Text" />
       <input
         className="bottom statement"
         type="text"
         placeholder="Bottom Text"
       />
-      <button type="submit" className="form--btn">
+      <button type="button" className="form--btn" onClick={props.handleSubmit}>
         Create a new meme Image 🖼
       </button>
-    </form>
+    </div>
   );
 }
 
-function Meme() {
+function Meme(props) {
   return (
     <div className="meme">
-      <img
-        className="meme--img"
-        src="https://i.imgflip.com/1bij.jpg"
-        alt="meme"
-      />
+      <img className="meme--img" src={props.meme.url} alt="meme" />
       <h2 className="meme--text top">Top text</h2>
       <h2 className="meme--text bottom">Bottom text</h2>
     </div>
@@ -34,10 +28,17 @@ function Meme() {
 }
 
 export default function Content() {
+  const [meme, setMeme] = useState(memes[1]);
+
+  function handleSubmit() {
+    const randIndx = Math.floor(Math.random() * memes.length);
+    console.log(memes[randIndx].url);
+  }
+
   return (
     <main className="content">
-      <Form />
-      <Meme />
+      <Form handleSubmit={handleSubmit} />
+      <Meme meme={meme} />
     </main>
   );
 }
