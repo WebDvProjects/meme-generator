@@ -9,6 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.5",
+    "eslint-plugin-react-hooks": "^5.0.0-next-ee8509801-20230117",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
